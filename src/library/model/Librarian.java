@@ -5,7 +5,7 @@ import library.enums.Role;
 
 import java.util.*;
 
-public class Librarian extends Person {
+public class Librarian extends Person implements Management {
     private Map<Integer, Author> authorsList;
     Scanner scan = new Scanner(System.in);
 
@@ -13,7 +13,8 @@ public class Librarian extends Person {
         super(id, name);
     }
 
-    protected Map<Integer, Book> putTheInitialBooks() {
+    @Override
+    public Map<Integer, Book> putTheInitialBooks() {
 
         Author author1 = new Author("John Doe");
         Author author2 = new Author("Jane Doe");
@@ -44,7 +45,8 @@ public class Librarian extends Person {
         return initialBooksMap;
     }
 
-    protected void addNewBook(Map<Integer, Book> bookList) {
+    @Override
+    public void addNewBook(Map<Integer, Book> bookList) {
         try {
             System.out.println("Title of Book:");
             String nTitle = scan.nextLine();
@@ -101,7 +103,8 @@ public class Librarian extends Person {
 
     }
 
-    protected void updateBook(Map<Integer, Book> bookList) {
+    @Override
+    public void updateBook(Map<Integer, Book> bookList) {
         try {
             boolean isExist = false;
             while (!isExist) {
@@ -167,7 +170,8 @@ public class Librarian extends Person {
         }
     }
 
-    protected void removeBook(Map<Integer, Book> bookList) {
+    @Override
+    public void removeBook(Map<Integer, Book> bookList) {
         try {
             boolean isExist = false;
             while (!isExist) {
@@ -187,7 +191,8 @@ public class Librarian extends Person {
         }
     }
 
-    protected void addBorrowedBook(int bookId, User loginUser, Map<Integer, Book> bookList) {
+    @Override
+    public void addBorrowedBook(int bookId, User loginUser, Map<Integer, Book> bookList) {
         if (bookId != 0) {
             if (loginUser.getBorrowedBooks().size() == 5) {
                 System.out.println("You can not borrowed more than 5 books..");
@@ -213,7 +218,8 @@ public class Librarian extends Person {
         }
     }
 
-    protected void returnBorrowedBook(int bookId, User loginUser, Map<Integer, Book> bookList) {
+    @Override
+    public void returnBorrowedBook(int bookId, User loginUser, Map<Integer, Book> bookList) {
         if (bookId != 0) {
             List<Book> newUserBooks = loginUser.getBorrowedBooks();
             newUserBooks.remove(bookList.get(bookId));
@@ -226,7 +232,8 @@ public class Librarian extends Person {
         }
     }
 
-    protected void startText() {
+    @Override
+    public void startText() {
         System.out.println("***************** Library Admin Panel *****************");
         System.out.println("[-] ADMIN PROCESSES:");
         System.out.println("\t[1] Add a New Book:");
@@ -239,7 +246,7 @@ public class Librarian extends Person {
         System.out.println("...Choice:");
     }
 
-    protected void getAllUserInfo(ArrayList<User> userList) {
+    public void getAllUserInfo(ArrayList<User> userList) {
         System.out.println(userList);
     }
 

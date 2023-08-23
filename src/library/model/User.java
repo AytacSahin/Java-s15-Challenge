@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class User extends Person {
+public class User extends Person implements SearchLibrary {
     private static int nextId = 1;
     private List<Book> borrowedBooks;
     Scanner scan = new Scanner(System.in);
@@ -37,6 +37,7 @@ public class User extends Person {
         this.balance = balance;
     }
 
+    @Override
     public void getAllBooks(Map<Integer, Book> bookList) {
         for (Map.Entry<Integer, Book> entry : bookList.entrySet()) {
             Book book = entry.getValue();
@@ -44,6 +45,7 @@ public class User extends Person {
         }
     }
 
+    @Override
     public void getBookWithAuthor(Map<Integer, Book> bookList) {
         System.out.println("Please insert an Author Name:");
         String author = scan.nextLine();
@@ -62,6 +64,7 @@ public class User extends Person {
         }
     }
 
+    @Override
     public void getBookWithTitle(Map<Integer, Book> bookList) {
         System.out.println("Please insert a Title:");
         String title = scan.nextLine();
@@ -80,6 +83,7 @@ public class User extends Person {
         }
     }
 
+    @Override
     public void getBookWithId(Map<Integer, Book> bookList) {
         System.out.println("Please insert an Id:");
         int id = scan.nextInt();
@@ -90,7 +94,7 @@ public class User extends Person {
             System.out.println(findBook);
         }
     }
-
+    @Override
     public void getBooksWithCategory(Map<Integer, Book> bookList) {
         System.out.println("Please insert a Category: ");
         String userInput = scan.nextLine();
