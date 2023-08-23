@@ -37,14 +37,14 @@ public class User extends Person {
         this.balance = balance;
     }
 
-    protected void getAllBooks(Map<Integer, Book> bookList) {
+    public void getAllBooks(Map<Integer, Book> bookList) {
         for (Map.Entry<Integer, Book> entry : bookList.entrySet()) {
             Book book = entry.getValue();
             System.out.println(book);
         }
     }
 
-    protected void getBookWithAuthor(Map<Integer, Book> bookList) {
+    public void getBookWithAuthor(Map<Integer, Book> bookList) {
         System.out.println("Please insert an Author Name:");
         String author = scan.nextLine();
         List<Book> filteredBooks = new ArrayList<>();
@@ -62,7 +62,7 @@ public class User extends Person {
         }
     }
 
-    protected void getBookWithTitle(Map<Integer, Book> bookList) {
+    public void getBookWithTitle(Map<Integer, Book> bookList) {
         System.out.println("Please insert a Title:");
         String title = scan.nextLine();
         List<Book> filteredBooks = new ArrayList<>();
@@ -80,7 +80,7 @@ public class User extends Person {
         }
     }
 
-    protected void getBookWithId(Map<Integer, Book> bookList) {
+    public void getBookWithId(Map<Integer, Book> bookList) {
         System.out.println("Please insert an Id:");
         int id = scan.nextInt();
         Book findBook = bookList.get(id);
@@ -91,7 +91,7 @@ public class User extends Person {
         }
     }
 
-    protected void getBooksWithCategory(Map<Integer, Book> bookList) {
+    public void getBooksWithCategory(Map<Integer, Book> bookList) {
         System.out.println("Please insert a Category: ");
         String userInput = scan.nextLine();
 
@@ -128,7 +128,7 @@ public class User extends Person {
         }
     }
 
-    protected int addBorrowedBook(Map<Integer, Book> bookList) {
+    public int addBorrowedBook(Map<Integer, Book> bookList) {
         System.out.println("Please insert a BookId you want to Borrow: ");
         int bookId = scan.nextInt();
         Book findBook = bookList.get(bookId);
@@ -140,7 +140,7 @@ public class User extends Person {
         return findBook == null ? 0 : bookId;
     }
 
-    protected int returnBorrowedBook(Map<Integer, Book> bookList, User loginUser) {
+    public int returnBorrowedBook(Map<Integer, Book> bookList, User loginUser) {
         System.out.println("Please insert a BookId you want to Return: ");
         int bookId = scan.nextInt();
         Book findBook = bookList.get(bookId);
@@ -153,7 +153,7 @@ public class User extends Person {
         return bookId;
     }
 
-    protected void startText() {
+    public void startText() {
         System.out.println("***************** Library Automation System *****************");
         System.out.println("[-] SEARCH IN LIBRARY:");
         System.out.println("\t[1] Get List of All Books in Library:");

@@ -13,7 +13,7 @@ public class Librarian extends Person {
         super(id, name);
     }
 
-    public Map<Integer, Book> putTheInitialBooks() {
+    protected Map<Integer, Book> putTheInitialBooks() {
 
         Author author1 = new Author("John Doe");
         Author author2 = new Author("Jane Doe");
@@ -187,7 +187,7 @@ public class Librarian extends Person {
         }
     }
 
-    public void addBorrowedBook(int bookId, User loginUser, Map<Integer, Book> bookList) {
+    protected void addBorrowedBook(int bookId, User loginUser, Map<Integer, Book> bookList) {
         if (bookId != 0) {
             if (loginUser.getBorrowedBooks().size() == 5) {
                 System.out.println("You can not borrowed more than 5 books..");
@@ -213,7 +213,7 @@ public class Librarian extends Person {
         }
     }
 
-    public void returnBorrowedBook(int bookId, User loginUser, Map<Integer, Book> bookList) {
+    protected void returnBorrowedBook(int bookId, User loginUser, Map<Integer, Book> bookList) {
         if (bookId != 0) {
             List<Book> newUserBooks = loginUser.getBorrowedBooks();
             newUserBooks.remove(bookList.get(bookId));
@@ -239,7 +239,7 @@ public class Librarian extends Person {
         System.out.println("...Choice:");
     }
 
-    public void getAllUserInfo(ArrayList<User> userList) {
+    protected void getAllUserInfo(ArrayList<User> userList) {
         System.out.println(userList);
     }
 

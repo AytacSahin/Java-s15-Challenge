@@ -161,6 +161,3 @@ public class LibraryApp {
         return null;
     }
 }
-
-
-
