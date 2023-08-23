@@ -63,12 +63,12 @@ public class Book {
 
     @Override
     public String toString() {
-        return "[------------------Book------------------]\n" +
-                "Book Id: " + getId() +
-                " Title: " + getTitle() +
-                " \nAuthor: " + getAuthor() +
-                " \nCategory: " + getCategory() +
-                " Available: " + isAvailable();
+        return "[------------------------Book------------------------]" +
+                "\nBook Id: " + getId() +
+                "\nTitle: " + getTitle() +
+                "\nAuthor: " + getAuthor() +
+                "\nCategory: " + getCategory() +
+                "\nAvailable: " + isAvailable();
     }
 
     @Override

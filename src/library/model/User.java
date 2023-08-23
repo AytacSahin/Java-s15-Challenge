@@ -45,7 +45,7 @@ public class User extends Person {
     }
 
     protected void getBookWithAuthor(Map<Integer, Book> bookList) {
-        System.out.println("Yazar ismi giriniz:");
+        System.out.println("Please insert an Author Name:");
         String author = scan.nextLine();
         List<Book> filteredBooks = new ArrayList<>();
         for (Book book : bookList.values()) {
@@ -58,12 +58,12 @@ public class User extends Person {
                 System.out.println(book);
             }
         } else {
-            System.out.println("Kitap / kitaplar bulunamadı.");
+            System.out.println("Book/s not found.");
         }
     }
 
     protected void getBookWithTitle(Map<Integer, Book> bookList) {
-        System.out.println("İsim giriniz:");
+        System.out.println("Please insert a Title:");
         String title = scan.nextLine();
         List<Book> filteredBooks = new ArrayList<>();
         for (Book book : bookList.values()) {
@@ -76,16 +76,16 @@ public class User extends Person {
                 System.out.println(book);
             }
         } else {
-            System.out.println("Kitap/kitaplar bulunamadı.");
+            System.out.println("Book/s not found.");
         }
     }
 
     protected void getBookWithId(Map<Integer, Book> bookList) {
-        System.out.println("Id giriniz:");
+        System.out.println("Please insert an Id:");
         int id = scan.nextInt();
         Book findBook = bookList.get(id);
         if (findBook == null) {
-            System.out.println("Kitap bulunamadı.");
+            System.out.println("Book/s not found.");
         } else if (findBook.getId() == id) {
             System.out.println(findBook);
         }
@@ -114,16 +114,16 @@ public class User extends Person {
                     }
                 }
                 if (filteredBooks.size() != 0) {
-                    System.out.println("Seçilen kategorideki kitaplar: ");
+                    System.out.println("Books in selected category: ");
                     for (Book book : filteredBooks) {
                         System.out.println(filteredBooks);
                         break;
                     }
                 } else {
-                    System.out.println("Kitap/kitaplar bulunamadı.");
+                    System.out.println("Book/s not found.");
                 }
             } else {
-                System.out.println("Geçersiz kategori. Tekrar Giriniz:");
+                System.out.println("Invalid category. Please try again..");
             }
         }
     }
@@ -133,22 +133,24 @@ public class User extends Person {
         int bookId = scan.nextInt();
         Book findBook = bookList.get(bookId);
         if (findBook == null) {
-            System.out.println("Kitap bulunamadı.");
+            System.out.println("Book/s not found.");
         } else if (findBook.getId() == bookId) {
             return bookId;
         }
         return findBook == null ? 0 : bookId;
     }
+
     protected int returnBorrowedBook(Map<Integer, Book> bookList, User loginUser) {
         System.out.println("Please insert a BookId you want to Return: ");
         int bookId = scan.nextInt();
         Book findBook = bookList.get(bookId);
         if (!loginUser.getBorrowedBooks().contains(findBook)) {
-            System.out.println("Kitap bulunamadı.");
+            System.out.println("The book you were looking for was not found.");
+            return 0;
         } else if (findBook.getId() == bookId) {
             return bookId;
         }
-        return findBook == null ? 0 : bookId;
+        return bookId;
     }
 
     protected void startText() {
@@ -175,13 +177,17 @@ public class User extends Person {
         return Role.USER;
     }
 
-    // TODO: 16.08.2023 : String Builder ile degistiricem.
     @Override
     public String toString() {
-        return "[*****] User Informations:" +
+        StringBuilder result = new StringBuilder("[*****] User Informations:" +
                 "\n[*] User Id: " + super.getId() +
-                "\n[*] İsim: " + super.getName() +
-                "\n[*] Aldığı Kitaplar: " + this.getBorrowedBooks();
-    }
+                "\n[*] User Name: " + super.getName() +
+                "\n[*] Borrowed Books:");
 
+        for (Book book : this.getBorrowedBooks()) {
+            result.append("\n").append(book);
+        }
+
+        return result.toString();
+    }
 }

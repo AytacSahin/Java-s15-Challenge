@@ -66,9 +66,9 @@ public class Librarian extends Person {
                     }
                 }
                 if (selectedCategory != null) {
-                    System.out.println("Seçilen kategori: " + selectedCategory);
+                    System.out.println("Selected category: " + selectedCategory);
                 } else {
-                    System.out.println("Geçersiz kategori. Tekrar Giriniz:");
+                    System.out.println("Invalid category. Please try again:");
                 }
             }
 
@@ -77,11 +77,11 @@ public class Librarian extends Person {
             for (Map.Entry<Integer, Author> authorEntry : authorsList.entrySet()) {
                 if (authorEntry.getValue().getName().equals(nAuthorName)) {
                     authorExists = true;
-                    System.out.println("Bu yazar daha önce kaydedilmiş.");
+                    System.out.println("This author has already been added.");
 
                     Book addBook = new Book(nTitle, authorEntry.getValue(), selectedCategory, true);
                     bookList.put(addBook.getId(), addBook);
-                    System.out.println("Başarıyla eklendi.");
+                    System.out.println("The new book successfully added..");
                     break;
                 }
             }
@@ -91,7 +91,7 @@ public class Librarian extends Person {
                 authorsList.put(newAuthor.getId(), newAuthor);
                 Book addBook = new Book(nTitle, newAuthor, selectedCategory, true);
                 bookList.put(addBook.getId(), addBook);
-                System.out.println("Başarıyla eklendi.");
+                System.out.println("The new book successfully added..");
             }
 
         } catch (
@@ -105,15 +105,15 @@ public class Librarian extends Person {
         try {
             boolean isExist = false;
             while (!isExist) {
-                System.out.println("Id giriniz:");
+                System.out.println("Please Insert an Id:");
                 int id = scan.nextInt();
                 Book findBook = bookList.get(id);
 
                 if (findBook == null) {
-                    System.out.println("Kitap bulunamadı. Geçerli bir id olmayabilir.");
+                    System.out.println("The book was not found. It may not be a valid id.");
                 } else if (findBook.getId() == id) {
                     isExist = true;
-                    System.out.println("****** Güncellenecek Kitap: ******\n" + findBook);
+                    System.out.println("****** Book To Be Updated: ******\n" + findBook);
                     scan.nextLine();
                     System.out.println("New Title of Book: " + "(id: " + findBook.getId() + ")");
                     String nTitle = scan.nextLine();
@@ -135,9 +135,9 @@ public class Librarian extends Person {
                             }
                         }
                         if (selectedCategory != null) {
-                            System.out.println("Seçilen kategori: " + selectedCategory);
+                            System.out.println("Selected category: " + selectedCategory);
                         } else {
-                            System.out.println("Geçersiz kategori. Tekrar Giriniz:");
+                            System.out.println("Invalid category. Please try again:");
                         }
                     }
                     boolean authorExists = false;
@@ -171,14 +171,14 @@ public class Librarian extends Person {
         try {
             boolean isExist = false;
             while (!isExist) {
-                System.out.println("Id giriniz:");
+                System.out.println("Please Insert an Id:");
                 int id = scan.nextInt();
                 Book findBook = bookList.get(id);
                 if (findBook == null) {
-                    System.out.println("Kitap bulunamadı. Geçerli bir id olmayabilir.");
+                    System.out.println("The book was not found. It may not be a valid id.");
                 } else if (findBook.getId() == id) {
                     isExist = true;
-                    System.out.println(findBook + "\n Kitabı silindi...");
+                    System.out.println(findBook + "\n = The book is removed from library...");
                     bookList.remove(id);
                 }
             }
@@ -221,6 +221,8 @@ public class Librarian extends Person {
             bookList.get(bookId).setAvailable(true);
             loginUser.setBalance(loginUser.getBalance() + 5);
             System.out.println("Dear, " + loginUser.getName() + ", we got the book back from you.");
+        } else {
+            System.out.println("Book id is invalid...");
         }
     }
 

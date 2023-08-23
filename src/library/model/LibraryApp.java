@@ -89,11 +89,11 @@ public class LibraryApp {
                 startUser();
                 break;
             case 6:
-                System.out.println("Bakiyeniz: " + loginUser.getBalance());
+                System.out.println("Your Balance: " + loginUser.getBalance());
                 startUser();
                 break;
             case 7:
-                System.out.println("Üzerinizdeki Kitaplar: " + loginUser.getBorrowedBooks());
+                System.out.println("The books you borrowed: " + loginUser.getBorrowedBooks());
                 startUser();
                 break;
             case 8:
@@ -121,7 +121,7 @@ public class LibraryApp {
         librarian.startText();
         int choice002 = scan.nextInt();
         while (1 > choice002 || choice002 > 5) {
-            System.out.println("Lütfen geçerli bir değer giriniz: ");
+            System.out.println("Please insert a valid value: ");
             choice002 = scan.nextInt();
         }
         switch (choice002) {
